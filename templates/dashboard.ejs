@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>AutoFeed</title>
+
+    <link
+      rel="stylesheet"
+      href="dashboard/assets/vendors/mdi/css/materialdesignicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="dashboard/assets/vendors/css/vendor.bundle.base.css"
+    />
+
+    <link rel="stylesheet" href="dashboard/assets/css/style.css" />
+
+    <link rel="shortcut icon" href="dashboard/assets/images/favicon.ico" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+      integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <nav
+        class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+      >
+        <div
+          class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+        >
+          <a class="navbar-brand brand-logo" href="index.html">AutoFeed</a>
+          <a class="navbar-brand brand-logo-mini" href="index.html">A-F</a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button
+            class="navbar-toggler navbar-toggler align-self-center"
+            type="button"
+            data-toggle="minimize"
+          >
+            <span class="mdi mdi-menu"></span>
+          </button>
+
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a
+                class="nav-link"
+                id="profileDropdown"
+                href="#"
+                data-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="nav-profile-img">
+                  <img src="dashboard/assets/images/face1.jpg" alt="image" />
+                  <span class="availability-status online"></span>
+                </div>
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black"><%= name%></p>
+                </div>
+              </a>
+            </li>
+
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="#">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+          </ul>
+          <button
+            class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+            type="button"
+            data-toggle="offcanvas"
+          >
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                  <img src="dashboard/assets/images/face1.jpg" alt="profile" />
+                  <span class="login-status online"></span>
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2"><%= name%></span>
+                </div>
+                <i
+                  class="mdi mdi-bookmark-check text-success nav-profile-badge"
+                ></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/audio">
+                <span class="menu-title">Upload New</span>
+                <i class="mdi mdi-diamond menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">
+                <span class="menu-title">Logout</span>
+                <i class="mdi mdi-power menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                <span
+                  class="page-title-icon bg-gradient-primary text-white mr-2"
+                >
+                  <i class="mdi mdi-home"></i>
+                </span>
+                Dashboard
+              </h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img
+                      src="dashboard/assets/images/dashboard/circle.svg"
+                      class="card-img-absolute"
+                      alt="circle-image"
+                    />
+                    <h4 class="font-weight-normal mb-3">
+                      Final Result
+                      <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5"><%= fin%></h2>
+                    <h6 class="card-text">The tone of the conversation</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img
+                      src="dashboard/assets/images/dashboard/circle.svg"
+                      class="card-img-absolute"
+                      alt="circle-image"
+                    />
+                    <h4 class="font-weight-normal mb-3">
+                      Total Sentences Exchanged
+                      <i
+                        class="mdi mdi-bookmark-outline mdi-24px float-right"
+                      ></i>
+                    </h4>
+                    <h2 class="mb-5"><%= length%></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Overall Composition</h4>
+                    <canvas id="traffic-chart"></canvas>
+                    <div
+                      id="traffic-chart-legend"
+                      class="rounded-legend legend-vertical legend-bottom-left pt-4"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Anger</h4>
+                    <canvas id="anger" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Sad</h4>
+                    <canvas id="sad" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Joy</h4>
+                    <canvas id="joy" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Analytical</h4>
+                    <canvas id="analytical" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Fear</h4>
+                    <canvas id="fear" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Confident</h4>
+                    <canvas id="confident" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Tentative</h4>
+                    <canvas id="tentative" style="height: 250px"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span
+                class="text-muted d-block text-center text-sm-left d-sm-inline-block"
+                >Copyright © gaurvendra.com 2020</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+              >
+                Made by @ Gaurvendra</span
+              >
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+    </div>
+
+    <!-- plugins:js -->
+    <script src="dashboard/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="dashboard/assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="dashboard/assets/js/off-canvas.js"></script>
+    <script src="dashboard/assets/js/hoverable-collapse.js"></script>
+    <script src="dashboard/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="dashboard/assets/js/dashboard.js"></script>
+
+    <!-- End custom js for this page -->
+
+    <script>
+      var areaData = {
+        labels:  [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data:  [<%= anger%>],
+            backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+            borderColor: ["rgba(255,99,132,1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("anger");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+      var areaData = {
+        labels:  [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data:  [<%= sadness%>],
+            backgroundColor: ["rgba(54, 162, 235, 0.2)"],
+            borderColor: ["rgba(54, 162, 235, 1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("sad");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+      var areaData = {
+        labels:  [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data:  [<%= joy%>],
+            backgroundColor: ["rgba(255, 206, 86, 0.2)"],
+            borderColor: ["rgba(255, 206, 86, 1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("joy");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+      var areaData = {
+        labels:  [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data:  [<%= analytical%>],
+            backgroundColor: ["rgba(75, 192, 192, 0.2)"],
+            borderColor: ["rgba(75, 192, 192, 1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("analytical");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+      var areaData = {
+        labels:  [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data:  [<%= fear%>],
+            backgroundColor: ["rgba(153, 102, 255, 0.2)"],
+            borderColor: ["rgba(153, 102, 255, 1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("fear");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+      var areaData = {
+        labels:  [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data:  [<%= confident%>],
+            backgroundColor: ["rgba(255, 159, 64, 0.2)"],
+            borderColor: ["rgba(255, 159, 64, 1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("confident");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+      var areaData = {
+        labels: [<%= labels%>],
+        datasets: [
+          {
+            label: "# Probablity",
+            data: [<%= tentative%>],
+            backgroundColor: ["rgba(189, 56, 125, 0.2)"],
+            borderColor: ["rgba(189, 56, 125, 1)"],
+            borderWidth: 1,
+            fill: true, // 3: no fill
+          },
+        ],
+      };
+      var areaOptions = {
+        plugins: {
+          filler: {
+            propagate: true,
+          },
+        },
+      };
+      var ctx = document.getElementById("tentative");
+      var areaChart = new Chart(ctx, {
+        type: "line",
+        data: areaData,
+        options: areaOptions,
+      });
+    </script>
+    <script>
+          var data = {
+            labels: <%- JSON.stringify(docLabel)%>,
+            datasets: [
+              {
+                label: "# Probablity",
+                data: [<%= docData%>],
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.2)",
+                  "rgba(54, 162, 235, 0.2)",
+                  "rgba(255, 206, 86, 0.2)",
+                  "rgba(75, 192, 192, 0.2)",
+                  "rgba(153, 102, 255, 0.2)",
+                  "rgba(255, 159, 64, 0.2)",
+                ],
+                borderColor: [
+                  "rgba(255,99,132,1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(255, 206, 86, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          };
+
+          var options = {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+        legend: {
+          display: false,
+        },
+        elements: {
+          point: {
+            radius: 0,
+          },
+        },
+      };
+          var ctx = document.getElementById("traffic-chart");
+          var myBarChart = new Chart(ctx, {
+            type: "bar",
+            data: data,
+            options: options,
+          });
+    </script>
+  </body>
+</html>

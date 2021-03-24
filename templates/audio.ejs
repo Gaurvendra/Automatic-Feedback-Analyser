@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AutoFeed</title>
+
+    <!-- Font Icon -->
+    <link
+      rel="stylesheet"
+      href="fonts/material-icon/css/material-design-iconic-font.min.css"
+    />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body style="background-color: grey">
+    <div class="main" style="background-color: grey">
+      <!-- Sing in  Form -->
+      <section class="sign-in" style="background-color: grey">
+        <div class="container">
+          <div class="signin-content">
+            <div class="signin-form">
+              <h2 class="form-title">Hello <%= name %></h2>
+              <h6 style="color: crimson">**ONLY UPLOAD FLAC FILE**</h6>
+              <form
+                method="POST"
+                action="/audio"
+                class="register-form"
+                id="login-form"
+                enctype="multipart/form-data"
+              >
+                <div class="form-group">
+                  <label for="your_name"
+                    ><i class="zmdi zmdi-upload material-icons-name"></i
+                  ></label>
+                  <input
+                    type="file"
+                    name="audio"
+                    id="file"
+                    placeholder="upload"
+                    required
+                    onchange="return fileValidation()"
+                  />
+                </div>
+
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="signin"
+                    id="signin"
+                    class="form-submit"
+                    value="upload"
+                  />
+                  <a href="/logout" class="form-submit">Logout</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      function fileValidation() {
+        var fileInput = document.getElementById("file");
+
+        var filePath = fileInput.value;
+
+        // Allowing file type
+        var allowedExtensions = /(\.flac)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+          alert("Invalid file type");
+          fileInput.value = "";
+          return false;
+        }
+      }
+    </script>
+  </body>
+  <!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
