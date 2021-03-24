@@ -35,6 +35,6 @@ app.use(audioRoute);
 //Misc
 app.use(miscRoute);
 
-app.listen(process.env.PORT,"3.234.194.20", () =>
+app.listen(process.env.PORT,"172-31-83-153", () =>
   console.log(`Listening on port ${process.env.PORT}.`)
 );
