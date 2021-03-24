@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     let temp = file.originalname.split(".");
     const filename =
-      temp[0] + "-" + hash.generateHash({ length: 5 }) + "." + temp[1];
+      temp[0] + "_" + hash.generateHash({ length: 5 }) + "." + temp[1];
     cb(null, filename);
   },
 });
